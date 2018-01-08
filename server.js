@@ -4,6 +4,9 @@
 // init project
 var express = require('express');
 var app = express();
+var mongo = require('mongodb').MongoClient;
+
+var db =  'mongodb://<dbuser>:<dbpassword>@ds143907.mlab.com:43907/teenee_url'
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
