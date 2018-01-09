@@ -5,6 +5,7 @@
 var express = require('express');
 var app = express();
 var mongo = require('mongodb').MongoClient;
+var validURL = require('valid-url');
 
 var dburl = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS + '@ds249727.' + process.env.HOST + ':' + process.env.DBPORT + '/' + process.env.DBNAME;
 
@@ -25,7 +26,7 @@ app.get('/new/:url', function(req, res){
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
     var collection = db.collection(process.env.COLLECTION);
-      collection.insert(
+      collection.insert()
   });
   
   
