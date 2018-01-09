@@ -33,14 +33,22 @@ app.get('/new/:url', function(req, res){
     if(err) throw err;
     
     var collection = db.collection(process.env.COLLECTION);
-      collection.insert(entry, function(err2, data){
+      collection.insert(entry, function(err2){
+      if(err2) throw err2;
         
-      });
+      console.log(JSON.stringify(entry));
+      
+      db.close();
+    });
   });
-  
+    res.end(JSON.stringify(entry));
   } else{
       console.log('Not a URI');    
   }
+});
+
+app.get('/:shortURL', function(req,res){
+  if  
 });
 
 // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
