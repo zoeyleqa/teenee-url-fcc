@@ -25,9 +25,12 @@ app.get("/", function (request, response) {
 app.get('/new/:url', function(req, res){
   var url = req.params.url;
   if(validURL.isUri(url)){
-     
+    
+    var entry = { "original" : url, 
+                  "shortened url" : req.} 
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
+    
     var collection = db.collection(process.env.COLLECTION);
       collection.insert()
   });
