@@ -49,11 +49,17 @@ app.get('/new/:url', function(req, res){
 
 app.get('/:shortURL', function(req,res){
   var url = req.params.shortURL;
+  
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
     
     var collection = db.collection(process.env.COLLECTION);
-    collection.find( "shortened_url" : 
+    collection.find({ "shortened_url" : url }).toArray(function(err2, doc){
+      if(err2) throw err2;
+      
+      console.log(doc);
+    });
+    db.close();
   });
 });
 
