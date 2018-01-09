@@ -27,7 +27,7 @@ app.get('/new/:url', function(req, res){
   if(validURL.isUri(url)){
     
     var entry = { "original" : url, 
-                  "shortened url" : req.protocal + '://' + req.headers.host + '/new/' + id.generate()} 
+                  "shortened_url" : req.protocal + '://' + req.headers.host + '/new/' + id.generate()} 
 
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
@@ -48,9 +48,12 @@ app.get('/new/:url', function(req, res){
 });
 
 app.get('/:shortURL', function(req,res){
-  
+  var url = req.params.shortURL;
   mongo.connect(dburl, function(err, db){
+    if(err) throw err;
     
+    var collection = db.collection(process.env.COLLECTION);
+    collection.find( "shortened_url" : 
   });
 });
 
