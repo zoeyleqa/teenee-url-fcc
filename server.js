@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 var mongo = require('mongodb').MongoClient;
 
-var db = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS + '@ds143907.' + process.env.HOST + ':' + process.env.PORT + '/' + process.env.dbname;
+// var db = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS + '@ds143907.' + process.env.HOST + ':' + process.env.PORT + '/' + process.env.DBNAME;
 
 
 // we've started you off with Express, 
