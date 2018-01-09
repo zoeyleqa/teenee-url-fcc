@@ -13,7 +13,8 @@
   "dependencies": {
     "express": "^4.16.2",
     "mongodb": "*",
-    "valid
+    "valid-url": "*",
+    "shortid": "*"
   },
   "engines": {
     "node": "8.x"
