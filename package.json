@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "mongodb": "*"
+    "mongodb": "*",
+    "valid
   },
   "engines": {
     "node": "8.x"

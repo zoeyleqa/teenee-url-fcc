@@ -6,6 +6,8 @@ var express = require('express');
 var app = express();
 var mongo = require('mongodb').MongoClient;
 var validURL = require('valid-url');
+var id = require('shortid');
+
 
 var dburl = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS + '@ds249727.' + process.env.HOST + ':' + process.env.DBPORT + '/' + process.env.DBNAME;
 
@@ -22,14 +24,17 @@ app.get("/", function (request, response) {
 
 app.get('/new/:url', function(req, res){
   var url = req.params.url;
-  
+  if(validURL.isUri(url)){
+     
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
     var collection = db.collection(process.env.COLLECTION);
       collection.insert()
   });
   
-  
+  } else{
+      console.log('Not a URI');    
+  }
 });
 
 // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
