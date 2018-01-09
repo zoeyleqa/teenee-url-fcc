@@ -65,18 +65,18 @@ app.get('/:shortURL', function(req,res){
   });
 });
 
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", function (request, response) {
-  dreams.push(request.query.dream);
-  response.sendStatus(200);
-});
+// // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
+// app.post("/dreams", function (request, response) {
+//   dreams.push(request.query.dream);
+//   response.sendStatus(200);
+// });
 
-// Simple in-memory store for now
-var dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-];
+// // Simple in-memory store for now
+// var dreams = [
+//   "Find and count some sheep",
+//   "Climb a really tall mountain",
+//   "Wash the dishes"
+// ];
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
