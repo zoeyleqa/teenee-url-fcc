@@ -13,9 +13,9 @@ $(function() {
     });
   });
 
-  $('form').submit(function(event) {
+  $('button').click(function(event) {
     event.preventDefault();
-    var dream = $('input').val();
+    var longURL= $('input').val();
     $.post('/dreams?' + $.param({dream: dream}), function() {
       $('<li></li>').text(dream).appendTo('ul#dreams');
       $('input').val('');
