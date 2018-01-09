@@ -48,7 +48,10 @@ app.get('/new/:url', function(req, res){
 });
 
 app.get('/:shortURL', function(req,res){
-  if  
+  
+  mongo.connect(dburl, function(err, db){
+    
+  });
 });
 
 // could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
