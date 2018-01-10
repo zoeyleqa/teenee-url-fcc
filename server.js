@@ -9,8 +9,8 @@ var validURL = require('valid-url');
 var id = require('shortid');
 
 
-var dburl = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS + '@ds249727.' + process.env.HOST + ':' + process.env.DBPORT + '/' + process.env.DBNAME;
-
+// var dburl = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS + '@ds249727.' + process.env.HOST + ':' + process.env.DBPORT + '/' + process.env.DBNAME;
+var dburl = 'mongodb://zoeyle:Angelo3495@ds249727.mlab.com:49727/fcc';
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
