@@ -10,7 +10,7 @@ var id = require('shortid');
 
 
 // var dburl = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS + '@'+process.env.HOST + ':' + process.env.DBPORT+'/'  ;
-var dburl = 'mongodb://zoeyle:angelo@ds249727.mlab.com:49727/';
+var dburl = 'mongodb://zoeyle:angelo@ds249727.mlab.com:49727/fcc';
 // var dburl = `mongodb://${encodeURIComponent(process.env.USER)}:${encodeURIComponent(process.env.PASS)}@${encodeURIComponent(process.env.HOST)}:${encodeURIComponent(process.env.DBPORT)}/${encodeURIComponent(process.env.DBNAME)}`
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -32,7 +32,7 @@ app.get('/new/:url', function(req, res){
 
   mongo.connect(dburl, function(err, client){
     if(err) throw err;
-    var db = client.db(process.env.DBNAME);
+    // var db = client.db('fcc');
     var collection = db.collection(process.env.COLLECTION);
       collection.insert(entry, function(err2){
       if(err2) throw err2;
