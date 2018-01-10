@@ -28,7 +28,7 @@ app.get('/new/:url', function(req, res){
   if(validURL.isUri(url)){
     
     var entry = { "original" : url, 
-                  "shortened_url" : req.protocal + '://' + req.headers.host + '/new/' + id.generate()} 
+                  "shortened_url" : req.protocal + '://' + req.headers.host + '/new/' + id.generate()}; 
 
   mongo.MongoClient.connect(dburl, function(err, db){
     if(err) throw err;
