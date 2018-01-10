@@ -4,7 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
-var mongo = require('mongodb').MongoClient;
+var mongo = require('mongodb');
 var validURL = require('valid-url');
 var id = require('shortid');
 
@@ -30,7 +30,7 @@ app.get('/new/:url', function(req, res){
     var entry = { "original" : url, 
                   "shortened_url" : req.protocal + '://' + req.headers.host + '/new/' + id.generate()} 
 
-  mongo.connect(dburl, function(err, db){
+  mongo.MongoClient.connect(dburl, function(err, db){
     if(err) throw err;
     
     var collection = db.collection(process.env.COLLECTION);
@@ -50,7 +50,7 @@ app.get('/new/:url', function(req, res){
 
 app.get('/:shortURL', function(req,res){
   
-  mongo.connect(dburl, function(err, db){
+  mongo.MongoClient.connect(dburl, function(err, db){
     if(err) throw err;
     
     var collection = db.collection(process.env.COLLECTION);
