@@ -26,6 +26,7 @@ app.get("/", function (request, response) {
 // wildcard /* can include something like /new/http://host.com/whatever/ while query string cannot include /
 app.get('/new/*', function(req, res){
   var url = req.params[0];
+  
   if(validURL.isUri(url)){
     
     var entry = { "original" : url, 
@@ -53,7 +54,7 @@ app.get('/:shortURL', function(req,res){
   
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
-    console.log(req.params.shortURL);
+    // console.log(req.params.shortURL);
     // var db = client.db(process.env.DBNAME);
     var collection = db.collection(process.env.COLLECTION);
     collection.find({ "shortened_url" : req.protocol + '://' + req.hostname + '/' + req.params.shortURL },
