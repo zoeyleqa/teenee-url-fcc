@@ -30,8 +30,8 @@ app.get('/new/*', function(req, res){
   
   if(validURL.isUri(url)){
     
-    var entry = { "original" : url, 
-                  "shortened_url" : req.protocol + '://' + req.hostname +'/' + id.generate()}; 
+    var entry = { "original_url" : url, 
+                  "short_url" : req.protocol + '://' + req.hostname +'/' + id.generate()}; 
     // console.log(JSON.stringify(entry));
     mongo.connect(dburl, function(err, db){
     if(err) throw err;
@@ -59,13 +59,13 @@ app.get('/:shortURL', function(req,res){
     // console.log(req.params.shortURL);
     // var db = client.db(process.env.DBNAME);
     var collection = db.collection(process.env.COLLECTION);
-    collection.find({ "shortened_url" : req.protocol + '://' + req.hostname + '/' + req.params.shortURL },
-                    { "_id": 0,"shortened_url" : 0} //exclusion
+    collection.find({ "short_url" : req.protocol + '://' + req.hostname + '/' + req.params.shortURL },
+                    { "_id": 0,"short_url" : 0} //exclusion
                    ).toArray(function(err2, doc){
                   if(err2) throw err2;
       
                   // doc[0] for getting the first find or only find
-                  res.redirect(doc[0].original);
+                  res.redirect(doc[0].original_url);
     });
     db.close();
   });
