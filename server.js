@@ -24,7 +24,7 @@ app.get("/", function (request, response) {
 });
 
 app.get('/new/*', function(req, res){
-  var url = req.params.url;
+  var url = req.params[0];
   if(validURL.isUri(url)){
     
     var entry = { "original" : url, 
