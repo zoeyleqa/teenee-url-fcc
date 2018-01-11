@@ -11,7 +11,7 @@
 body {
   font-family: helvetica, arial, sans-serif;
   margin: 25px;
-  background-color:  #4d0000;
+  background-color:  #1a0000;
 }
 
 h1 {
@@ -21,6 +21,13 @@ h1 {
 h3{
   color:  #004d13;
 }
+h4{
+   color: #004d4d;
+}
+li{
+ color:#004d4d; 
+}
+
 .bold {
   font-weight: bold;
 }
@@ -30,7 +37,7 @@ p {
 }
 
 code {
-  
+  color: #ff9999;
 }
 /* form {
   margin-bottom: 25px;
