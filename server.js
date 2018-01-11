@@ -29,7 +29,7 @@ app.get('/new/:url', function(req, res){
     
     var entry = { "original" : url, 
                   "shortened_url" : req.protocal + '://' + req.headers.host + '/new/' + id.generate()}; 
-
+console.log(JSON.stringify(entry));
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
     // var db = client.db('fcc');
@@ -37,7 +37,7 @@ app.get('/new/:url', function(req, res){
       collection.insert(entry, function(err2){
       if(err2) throw err2;
         
-      console.log(JSON.stringify(entry));
+      // console.log(JSON.stringify(entry));
       
       db.close();
     });
@@ -59,7 +59,7 @@ app.get('/:shortURL', function(req,res){
                    ).toArray(function(err2, doc){
                   if(err2) throw err2;
       
-                  console.log(doc[0]);
+                  // console.log(doc[0]);
                   res.redirect(doc[0]);
     });
     db.close();
