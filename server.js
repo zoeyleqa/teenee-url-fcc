@@ -29,7 +29,7 @@ app.get('/new/*', function(req, res){
   if(validURL.isUri(url)){
     
     var entry = { "original" : url, 
-                  "shortened_url" : req.protocal + '://' + req.headers.host + '/new/' + id.generate()}; 
+                  "shortened_url" : req.protocol + '://' + req.headers.host + '/new/' + id.generate()}; 
 console.log(JSON.stringify(entry));
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
@@ -53,6 +53,7 @@ app.get('/:shortURL', function(req,res){
   
   mongo.connect(dburl, function(err, db){
     if(err) throw err;
+    console.log(req.params.shortURL);
     // var db = client.db(process.env.DBNAME);
     var collection = db.collection(process.env.COLLECTION);
     collection.find({ "shortened_url" : req.params.shortURL },
