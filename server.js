@@ -23,7 +23,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/new/:url', function(req, res){
+app.get('/new/*', function(req, res){
   var url = req.params.url;
   if(validURL.isUri(url)){
     
