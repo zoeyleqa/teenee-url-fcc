@@ -23,6 +23,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+// wildcard /* can include something like /new/http://host.com/whatever/ while query string cannot include /
 app.get('/new/*', function(req, res){
   var url = req.params[0];
   if(validURL.isUri(url)){
