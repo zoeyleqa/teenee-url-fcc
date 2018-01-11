@@ -26,7 +26,10 @@ p {
   max-width: 600px;
 }
 
-form {
+code {
+  
+}
+/* form {
   margin-bottom: 25px;
   padding: 15px;
   background-color: cyan;
@@ -61,21 +64,13 @@ button:hover {
 
 button:active {
   box-shadow: none;
-}
+} */
 
 li {
   margin-bottom: 5px;
 }
 
-footer {
-  margin-top: 50px;
-  padding-top: 25px;
-  border-top: 1px solid lightgrey;
-}
 
-footer > a {
-  color: #BBBBBB;
-}
 
 .nicejob {
   text-decoration: line-through;
