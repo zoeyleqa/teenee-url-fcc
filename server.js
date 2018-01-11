@@ -9,9 +9,10 @@ var validURL = require('valid-url');
 var id = require('shortid');
 
 
-// var dburl = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS + '@'+process.env.HOST + ':' + process.env.DBPORT+'/'  ;
-var dburl = 'mongodb://zoeyle:angelo@ds249727.mlab.com:49727/fcc';
+var dburl = process.env.DBPROGRAM + '://' + process.env.USER +':'+ process.env.PASS 
++ '@'+process.env.HOST + ':' + process.env.DBPORT+'/' +process.env.DBNAME ;
 // var dburl = `mongodb://${encodeURIComponent(process.env.USER)}:${encodeURIComponent(process.env.PASS)}@${encodeURIComponent(process.env.HOST)}:${encodeURIComponent(process.env.DBPORT)}/${encodeURIComponent(process.env.DBNAME)}`
+
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
 
@@ -31,10 +32,10 @@ app.get('/new/*', function(req, res){
     
     var entry = { "original" : url, 
                   "shortened_url" : req.protocol + '://' + req.hostname +'/' + id.generate()}; 
-console.log(JSON.stringify(entry));
-  mongo.connect(dburl, function(err, db){
+    // console.log(JSON.stringify(entry));
+    mongo.connect(dburl, function(err, db){
     if(err) throw err;
-    // var db = client.db('fcc');
+    // var db = client.db('fcc'); this for mongo v3
     var collection = db.collection(process.env.COLLECTION);
       collection.insert(entry, function(err2){
       if(err2) throw err2;
@@ -44,25 +45,26 @@ console.log(JSON.stringify(entry));
       db.close();
     });
   });
-    res.end(JSON.stringify(entry));
+      res.end(JSON.stringify(entry));
   } else{
       console.log('Not a URI');    
   }
 });
 
+// this takes hostname/id/ not hostname/id/something/more
 app.get('/:shortURL', function(req,res){
   
-  mongo.connect(dburl, function(err, db){
+    mongo.connect(dburl, function(err, db){
     if(err) throw err;
     // console.log(req.params.shortURL);
     // var db = client.db(process.env.DBNAME);
     var collection = db.collection(process.env.COLLECTION);
     collection.find({ "shortened_url" : req.protocol + '://' + req.hostname + '/' + req.params.shortURL },
-                    { "_id": 0,"shortened_url" : 0}
+                    { "_id": 0,"shortened_url" : 0} //exclusion
                    ).toArray(function(err2, doc){
                   if(err2) throw err2;
       
-                  // console.log(doc[0]);
+                  // doc[0] for getting the first find or only find
                   res.redirect(doc[0].original);
     });
     db.close();
