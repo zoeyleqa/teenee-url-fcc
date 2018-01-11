@@ -7,20 +7,20 @@
 $(function() {
   console.log('hello world :o');
   
-  $.get('/dreams', function(dreams) {
-    dreams.forEach(function(dream) {
-      $('<li></li>').text(dream).appendTo('ul#dreams');
-    });
-  });
+//   $.get('/dreams', function(dreams) {
+//     dreams.forEach(function(dream) {
+//       $('<li></li>').text(dream).appendTo('ul#dreams');
+//     });
+//   });
 
-  $('button').click(function(event) {
-    event.preventDefault();
-    var longURL= $('input').val();
-    $.post('/dreams?' + $.param({dream: dream}), function() {
-      $('<li></li>').text(dream).appendTo('ul#dreams');
-      $('input').val('');
-      $('input').focus();
-    });
-  });
+//   $('button').click(function(event) {
+//     event.preventDefault();
+//     var longURL= $('input').val();
+//     $.post('/dreams?' + $.param({dream: dream}), function() {
+//       $('<li></li>').text(dream).appendTo('ul#dreams');
+//       $('input').val('');
+//       $('input').focus();
+//     });
+//   });
 
 });

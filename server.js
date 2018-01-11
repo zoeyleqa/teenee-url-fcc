@@ -56,7 +56,7 @@ app.get('/:shortURL', function(req,res){
     console.log(req.params.shortURL);
     // var db = client.db(process.env.DBNAME);
     var collection = db.collection(process.env.COLLECTION);
-    collection.find({ "shortened_url" : req.params.shortURL },
+    collection.find({ "shortened_url" : req.protocol + '://' + req.headers.host + req.params.shortURL },//has extra /new/
                     { "shortened_url" : 0}
                    ).toArray(function(err2, doc){
                   if(err2) throw err2;
