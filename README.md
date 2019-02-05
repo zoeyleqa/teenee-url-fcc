@@ -29,7 +29,7 @@ https://teenee-url-fcc.glitch.me/new/http://foo.com:80
 
 ### Usage:
 `
-https://url-shortenr.glitch.me/S1Au3N1xG
+https://teenee-url-fcc.glitch.me/S1Au3N1xG
 `
 Will redirect to:
 `
